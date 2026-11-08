@@ -1,0 +1,19 @@
+
+# Compiled files
+*.o
+*.out
+*.exe
+*.obj
+*.a
+*.so
+
+# Build directories
+build/
+bin/
+Debug/
+Release/
+
+# Editor and system files
+.vscode/
+.DS_Store
+*~
