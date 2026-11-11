@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <string.h>
+#include <math.h>
 
 void printLetters(void);
 void printChar(void);
@@ -6,6 +8,14 @@ void printLettersF(void);
 void printLettersA(void);
 void printLettersInput(void);
 void printTable(void);
+void printCharArray(void);
+void culTwoFloat(void);
+void culTwoFloatFun(void);
+double culval(double v1, double v2);
+void culSumSquare(void);
+void printInt(void);
+void culSumSquence(void);
+void cul2pow(void);
 
 int main(void)
 {
@@ -20,7 +30,21 @@ int main(void)
     //Q5
     //printLettersInput();
     //Q6
-    printTable();
+    //printTable();
+    //Q7
+    //printCharArray();
+    //Q8
+    //culTwoFloat();
+    //Q9
+    //culTwoFloatFun();
+    //Q10
+    //culSumSquare();
+    //Q11
+    //printInt();
+    //Q12
+    //culSumSquence();
+    //Q13
+    cul2pow();
 
     return 0;
 }
@@ -110,4 +134,107 @@ void printTable(void)
         n = num1 + i;
         printf("%7d  %6d  %4d\n", n, n * n, n * n * n);
     }
+}
+
+void printCharArray(void)
+{
+    char ch_arr[20];
+    int i;
+    size_t len;
+
+    printf("Enter a word: ");
+    scanf("%s", ch_arr);
+    len = strlen(ch_arr);
+    for (i = len - 1; i >= 0; i--) {
+        printf("%c", ch_arr[i]);
+    }
+    printf("\n");
+}
+
+void culTwoFloat(void)
+{
+    double f1, f2;
+
+    printf("Enter two float numbers: ");
+    while (scanf("%lf %lf", &f1, &f2) == 2) {
+        printf("(%.2f - %.2f) / (%.2f * %.2f) = %.4f\n\n", f1, f2, f1, f2,
+        (f1 - f2) / (f1 * f2));
+        printf("Enter the next values (type non-number to quit): ");
+    }
+    printf("done\n");
+}
+
+void culTwoFloatFun(void)
+{
+    double f1, f2, ret;
+
+    printf("Enter two float numbers: ");
+    while (scanf("%lf %lf", &f1, &f2) == 2) {
+        ret = culval(f1, f2);
+        printf("(%.2f - %.2f) / (%.2f * %.2f) = %.4f\n\n", f1, f2, f1, f2, ret);
+        printf("Enter the next values (type non-number to quit): ");
+    }
+    printf("done\n");
+}
+double culval(double v1, double v2)
+{
+    return (v1 - v2) / (v1 * v2);
+}
+
+void culSumSquare(void)
+{
+    int upperint, lowerint, i, sum;
+
+    printf("Enter lower and upper integer limits: ");
+    scanf("%d %d", &lowerint, &upperint);
+    while (upperint > lowerint) {
+        for (i = lowerint, sum = 0; i <= upperint; i++) {
+            sum += i * i;
+        }
+        printf("The sums of the squares from %d to %d is %d\n\n",
+        lowerint * lowerint, upperint * upperint, sum);
+        printf("Enter next set of limits: ");
+        scanf("%d %d", &lowerint, &upperint);
+    }
+    printf("Done\n");
+}
+
+void printInt(void)
+{
+    const int SIZE = 8;
+    int arr[SIZE], i;
+
+    printf("Enter eight integers: ");
+    for (i = 0; i < SIZE; i++) {
+        scanf("%d", &arr[i]);
+    }
+    for (i = SIZE - 1; i >= 0; i--) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+void culSumSquence(void)
+{
+    double tot_1, tot_2;
+    int deno, count;
+
+    printf("Enter the count: ");
+    scanf("%d", &count);
+    while (count > 0) {
+        for (deno = 1, tot_1 = 0, tot_2 = 0; deno <= count; deno++) {
+            tot_1 += 1.0 / deno;
+            tot_2 += 1.0 / ((pow(-1, deno - 1)) * deno);
+        }
+        printf("Squence 1 converges to %.8f after %d times iteration\n", tot_1, count);
+        printf("Squence 2 converges to %.8f after %d times iteration\n\n", tot_2, count);
+        printf("Enter the next count: ");
+        scanf("%d", &count);
+    }
+    printf("Done\n");
+}
+
+void cul2pow()
+{
+    
 }
