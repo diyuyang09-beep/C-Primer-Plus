@@ -1,3 +1,6 @@
+/*
+This C file contains the programming exercises from Chapter 6
+*/
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
@@ -16,35 +19,50 @@ void culSumSquare(void);
 void printInt(void);
 void culSumSquence(void);
 void cul2pow(void);
+void printDoubleArr(void);
+void printStr(void);
+void culInvestProfit(void);
+void culBankAccount(void);
+void culNumber(void);
 
 int main(void)
 {
     //Q1
-    //printLetters();
+    printLetters();
     //Q2
-    //printChar();
+    printChar();
     //Q3
-    //printLettersF();
+    printLettersF();
     //Q4
-    //printLettersA();
+    printLettersA();
     //Q5
-    //printLettersInput();
+    printLettersInput();
     //Q6
-    //printTable();
+    printTable();
     //Q7
-    //printCharArray();
+    printCharArray();
     //Q8
-    //culTwoFloat();
+    culTwoFloat();
     //Q9
-    //culTwoFloatFun();
+    culTwoFloatFun();
     //Q10
-    //culSumSquare();
+    culSumSquare();
     //Q11
-    //printInt();
+    printInt();
     //Q12
-    //culSumSquence();
+    culSumSquence();
     //Q13
     cul2pow();
+    //Q14
+    printDoubleArr();
+    //Q15
+    printStr();
+    //Q16
+    culInvestProfit();
+    //Q17
+    culBankAccount();
+    //Q18
+    culNumber();
 
     return 0;
 }
@@ -236,5 +254,109 @@ void culSumSquence(void)
 
 void cul2pow()
 {
-    
+    const int SIZE = 8;
+    int arr[SIZE], i;
+
+    for (i = 0; i < SIZE; i++) {
+        arr[i] = pow(2, i);
+    }
+    i = 0;
+    do {
+        printf("%d ", arr[i]);
+        i++;
+    } while (i < SIZE);
+    printf("\n");
 }
+
+void printDoubleArr(void)
+{
+    const int SIZE = 8;
+    double arr_1[8], arr_2[8];
+    int i, sum;
+
+    for (i = 0, sum = 0; i < SIZE; i++) {
+        printf("Enter double value %d: ", i + 1);
+        scanf("%lf", &arr_1[i]);
+        sum += arr_1[i];
+        arr_2[i] = sum;
+    }
+
+    for (i = 0; i < SIZE; i++) {
+        printf("%5.2f ", arr_1[i]);
+    }
+    printf("\n");
+    for (i = 0; i < SIZE; i++) {
+        printf("%5.2f ", arr_2[i]);
+    }
+    printf("\n");
+}
+
+void printStr(void)
+{
+    const int SIZE = 255;
+    char chArr[SIZE];
+    int i;
+
+    printf("Enter a string: ");
+    i = 0;
+    do {
+        scanf("%c", &chArr[i]);
+        i++;
+    } while (chArr[i - 1] != '\n'); 
+    for (i -= 2; i >= 0; i--) {
+        printf("%c", chArr[i]);
+    }
+    printf("\n");
+}
+
+void culInvestProfit(void)
+{
+    const int Daph = 100, Deir = 100;
+    const double Dainterest = 0.1, Deinterest = 0.05;
+    double Datot, Detot;
+    int year;
+
+    Datot = Daph;
+    Detot = Deir;
+    year = 0;
+    while (Detot <= Datot) {
+        Datot += Daph * Dainterest;
+        Detot += Detot * Deinterest;
+        year++;
+    }
+    printf("In the Year %d, the investment amount of Daphne exceeds Deirdre.\n",
+    year);
+    printf("Daphne: %.6f$, Deirdre: %.6f$\n", Datot, Detot);
+}
+
+void culBankAccount(void)
+{
+    const int bonus = 1000000, cost = 100000;
+    const double interest = 0.08;
+    double tot;
+    int year;
+
+    year = 0;
+    tot = bonus;
+    while (tot > 0) {
+        tot += tot * interest;
+        tot -= cost;
+        year++;
+    }
+    printf("The account will be empty in the year %d.\n", year);
+}
+
+void culNumber(void)
+{
+    const int iniNum = 5, DunNum = 150;
+    int totNum, week;
+
+    week = 0;
+    totNum = iniNum;
+    while (totNum <= DunNum) {
+        totNum = (totNum - week - 1) * 2;
+        week++;
+        printf("Week %d, friend's number: %d\n", week, totNum);
+    }
+}
+
